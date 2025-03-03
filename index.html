@@ -3,16 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca do Thiago</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Biblioteca Digital</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<h1>Biblioteca do Thiago 📚</h1>
-<input type="text" id="search" placeholder="Buscar livros...">
-<ul id="book-list">
-    <li><a href="livros/livro1.pdf" target="_blank">Como ser um Cientista de Dados</a></li>
-    <li><a href="livros/livro2.pdf" target="_blank">Introdução ao Machine Learning</a></li>
-</ul>
-<script src="search.js"></script>
+<h1>Biblioteca Digital</h1>
+<p>Lista de Livros Disponíveis:</p>
+<div id="lista-livros"></div>
+
+<script>
+    async function listarLivros() {
+        const caminho = 'livros/';
+        const arquivos = [
+            'livro1.pdf',
+            'livro2.pdf',
+            'livro3.pdf'
+        ];
+
+        const div = document.getElementById("lista-livros");
+        arquivos.forEach(arquivo => {
+            const link = document.createElement("a");
+            link.href = caminho + arquivo;
+            link.target = "_blank";
+            link.textContent = arquivo;
+            div.appendChild(link);
+        });
+    }
+    listarLivros();
+</script>
 </body>
 </html>
